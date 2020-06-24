@@ -7,6 +7,6 @@ test('link and image should exist', () => {
   const container = document.createElement('div');
   document.body.appendChild(container);
   render(() => <App />, container as MountableElement);
-  expect(screen.queryByRole('link')).toHaveTextContent('Learn Solid');
+  expect(screen.queryByRole('link')).toBeInTheDocument();
   expect(container).toContainElement(screen.queryByRole('img', { name: /logo/i }));
 });

@@ -5,7 +5,6 @@ test('renders without crashing', () => {
   app.setAttribute('id', 'app');
   document.body.appendChild(app);
   require('main');
-  const link = screen.getByRole('link');
+  const link = screen.queryByRole('link');
   expect(link).toBeInTheDocument();
-  expect(link).toHaveTextContent('Learn Solid');
 });
