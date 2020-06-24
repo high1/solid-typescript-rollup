@@ -1,10 +1,13 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended"],
+  "extends": [
+    "eslint:recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -25,14 +28,30 @@
         "SwitchCase": 1
       }
     ],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "comma-dangle": ["error", "always-multiline"],
-    "semi": ["error", "always"]
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
   },
+  "ignorePatterns": ["dist/*"],
   "overrides": [
     {
-      "files": ["**/*.ts", "**/*.tsx"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
       "parser": "@typescript-eslint/parser",
       "extends": [
         "eslint:recommended",
@@ -50,7 +69,9 @@
         "plugin:prettier/recommended",
         "prettier/@typescript-eslint"
       ],
-      "plugins": ["local"],
+      "plugins": [
+        "local"
+      ],
       "rules": {
         "@typescript-eslint/explicit-function-return-type": [
           "warn",
@@ -70,7 +91,10 @@
       },
       "settings": {
         "import/parsers": {
-          "@typescript-eslint/parser": [".ts", ".tsx"]
+          "@typescript-eslint/parser": [
+            ".ts",
+            ".tsx"
+          ]
         }
       },
       "env": {

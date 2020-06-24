@@ -13,6 +13,10 @@
   }
 }
 
+.App-wordmark {
+  height: 5vmin;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
