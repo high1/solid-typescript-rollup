@@ -6,6 +6,8 @@ import url from '@rollup/plugin-url';
 import hotcss from 'rollup-plugin-hot-css';
 import static_files from 'rollup-plugin-static-files';
 import { terser } from 'rollup-plugin-terser';
+import autoprefixer from 'autoprefixer';
+import postcss from 'postcss';
 
 const extensions =  ['.ts', '.tsx'];
 let config = {
@@ -23,6 +25,7 @@ let config = {
     hotcss({
       hot: process.env.NODE_ENV === 'development',
       filename: 'styles.css',
+      loaders: ['scss', postCSSLoader]
     }),
     resolve({ extensions, browser: true }),
     babel({ extensions, babelHelpers: 'bundled' }),
@@ -44,6 +47,15 @@ if (process.env.NODE_ENV === 'production') {
       },
     }),
   ]);
+}
+
+function postCSSLoader (input, id) {
+  return postcss([autoprefixer]).process(input.code, { from: undefined } ).then(res => {
+      return {
+          code: res.css,
+          map: res.map && res.map.toJSON(),
+      };
+  });
 }
 
 export default config;

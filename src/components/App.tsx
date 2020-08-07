@@ -1,7 +1,7 @@
 import { Component } from 'solid-js';
 import logo from '../assets/logo.svg';
 import wordmark from '../assets/wordmark.svg';
-import './App.css';
+import './App.scss';
 
 const App: Component = () => (
   <div class="App">

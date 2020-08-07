@@ -1,11 +1,14 @@
 import { moduleHotAccept } from '../main';
 
 test('calls hot', () => {
-  delete window.location;
   const reloadSpy = jest.fn();
-  window.location = ({
-    reload: reloadSpy,
-  } as unknown) as Location;
+  window = Object.create(window);
+  Object.defineProperty(window, "location", {
+      value: {
+        reload: reloadSpy,
+      },
+      // writable: true
+  });
   const acceptSpy = jest.fn((cb: () => void) => cb());
   const mod = {
     hot: {
