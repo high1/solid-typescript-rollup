@@ -1,5 +1,6 @@
 import { Component } from 'solid-js';
 import logo from '../assets/logo.svg';
+import { MyEnum } from './MyEnum';
 import wordmark from '../assets/wordmark.svg';
 import './App.scss';
 
@@ -13,6 +14,7 @@ const App: Component = () => (
       <a class="App-link" href="https://solidjs.com" target="_blank" rel="noopener noreferrer">
         <img src={wordmark} class="App-wordmark" alt="wordmark" />
       </a>
+      <p>{MyEnum.first}</p>
     </header>
   </div>
 );
