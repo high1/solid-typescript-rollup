@@ -8,10 +8,7 @@ if (root) {
   render(() => <App />, root);
 }
 
-export const moduleHotAccept = (mod: NodeModule): void => {
-  if (mod && mod.hot) {
-    mod.hot.accept(() => window.location.reload());
-  }
-};
+export const moduleHotAccept = (mod: NodeModule): void => 
+    mod?.hot?.accept(() => window.location.reload());
 
 moduleHotAccept(module);

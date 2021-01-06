@@ -1,13 +1,20 @@
 {
-    "presets": [
-        "solid",
-        "@babel/preset-typescript",
+  "presets": [
+    "solid",
+    "@babel/preset-typescript"
+  ],
+  "env": {
+    "test": {
+      "presets": [
         [
           "@babel/preset-env",
           {
-            "useBuiltIns": "entry",
-            "corejs": "3.0.0"
+            "targets": {
+              "node": true
+            }
           }
         ]
-    ]
+      ]
+    }
+  }
 }
