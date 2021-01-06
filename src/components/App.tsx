@@ -12,10 +12,7 @@ const App: Component = () => {
     <header class="App-header">
       <img src={logo} class="App-logo" alt="logo" />
       <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <p>
-        Timer is <code>{count()}</code>.
+        Edit <code>src/App.tsx</code> and save to reload. <code>{count()}</code> and counting...
       </p>
       <a class="App-link" href="https://solidjs.com" target="_blank" rel="noopener noreferrer">
         <img src={wordmark} class="App-wordmark" alt="wordmark" />

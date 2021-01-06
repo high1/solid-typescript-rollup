@@ -1,13 +1,13 @@
 {
   "presets": [
     "solid",
-    "@babel/preset-typescript"
+    "@babel/typescript"
   ],
   "env": {
     "test": {
       "presets": [
         [
-          "@babel/preset-env",
+          "@babel/env",
           {
             "targets": {
               "node": true
