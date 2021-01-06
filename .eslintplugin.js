@@ -24,13 +24,13 @@ module.exports.rules = {
       return {
         JSXOpeningElement(node) {
           let name;
-          if (node.name.namespace && node.name.namespace.name) {
+          if (node?.name?.namespace?.name) {
             // <Foo:Bar>
             name = node.name.namespace.name;
-          } else if (node.name.name) {
+          } else if (node?.name?.name) {
             // <Foo>
             name = node.name.name;
-          } else if (node.name.object) {
+          } else if (node?.name?.object) {
             // <Foo...Bar>
             let parent = node.name.object;
             while (parent.object) {
