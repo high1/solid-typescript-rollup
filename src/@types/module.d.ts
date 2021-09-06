@@ -1,5 +1,5 @@
 declare interface NodeModule {
   hot: {
-    accept(fn: () => void): void;
+    accept(function_: () => void): void;
   };
 }

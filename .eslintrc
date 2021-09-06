@@ -77,7 +77,7 @@
       "settings": {
         "import/resolver": {
           "typescript": {}
-        },
+        }
       },
       "env": {
         "es2020": true,
