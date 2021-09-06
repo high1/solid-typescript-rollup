@@ -6,46 +6,24 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:unicorn/recommended",
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
-  "rules": {
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ]
-  },
-  "ignorePatterns": ["dist/*"],
+  "ignorePatterns": [
+    "dist/*"
+  ],
   "overrides": [
     {
       "files": [
@@ -55,7 +33,6 @@
       "parser": "@typescript-eslint/parser",
       "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:jsx-a11y/recommended",
@@ -64,13 +41,10 @@
         "plugin:import/typescript",
         "plugin:jest/recommended",
         "plugin:jest/style",
-        "plugin:testing-library/recommended",
+        "plugin:testing-library/dom",
         "plugin:jest-dom/recommended",
-        "plugin:prettier/recommended",
-        "prettier/@typescript-eslint"
-      ],
-      "plugins": [
-        "local"
+        "plugin:unicorn/recommended",
+        "plugin:prettier/recommended"
       ],
       "rules": {
         "@typescript-eslint/explicit-function-return-type": [
@@ -79,23 +53,31 @@
             "allowExpressions": true
           }
         ],
-        "local/jsx-uses-vars": "error"
+        "unicorn/filename-case": [
+          "error",
+          {
+            "cases": {
+              "pascalCase": true,
+              "kebabCase": true
+            }
+          }
+        ]
       },
       "parserOptions": {
+        "project": [
+          "./tsconfig.json"
+        ],
         "sourceType": "module",
         "ecmaFeatures": {
           "impliedStrict": true,
           "jsx": true
         },
-        "project": "./tsconfig.json"
+        "ecmaVersion": 2020
       },
       "settings": {
-        "import/parsers": {
-          "@typescript-eslint/parser": [
-            ".ts",
-            ".tsx"
-          ]
-        }
+        "import/resolver": {
+          "typescript": {}
+        },
       },
       "env": {
         "es2020": true,

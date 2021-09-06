@@ -8,13 +8,13 @@ test('calls hot', () => {
     },
     writable: true,
   });
-  const acceptSpy = jest.fn((cb: () => void) => cb());
-  const mod = {
+  const acceptSpy = jest.fn((callback: () => void) => callback());
+  const module_ = {
     hot: {
       accept: acceptSpy,
     },
   };
-  moduleHotAccept((mod as unknown) as NodeModule);
+  moduleHotAccept(module_ as unknown as NodeModule);
   expect(acceptSpy).toHaveBeenCalled();
   expect(reloadSpy).toHaveBeenCalled();
 });

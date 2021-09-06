@@ -1,10 +1,9 @@
-import { screen } from '@testing-library/dom';
+import { screen } from 'solid-testing-library';
 
-test('renders without crashing', () => {
+test('renders without crashing', async () => {
   const app = document.createElement('div');
   app.setAttribute('id', 'app');
-  document.body.appendChild(app);
-  require('main');
-  const link = screen.queryByRole('link');
-  expect(link).toBeInTheDocument();
+  document.body.append(app);
+  await import('main');
+  expect(screen.queryByRole('link')).toBeInTheDocument();
 });

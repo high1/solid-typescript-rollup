@@ -7,7 +7,8 @@ import hotcss from 'rollup-plugin-hot-css';
 import static_files from 'rollup-plugin-static-files';
 import { terser } from 'rollup-plugin-terser';
 
-const extensions =  ['.ts', '.tsx'];
+const extensions = ['.js', '.ts', '.tsx'];
+const isProduction = process.env.NODE_ENV === 'production';
 let config = {
   input: './src/main.tsx',
   output: {
@@ -19,6 +20,7 @@ let config = {
   plugins: [
     replace({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      preventAssignment: true,
     }),
     hotcss({
       hot: process.env.NODE_ENV === 'development',
@@ -28,14 +30,10 @@ let config = {
     babel({ extensions, babelHelpers: 'bundled' }),
     // commonjs(),
     url(),
-  ],
-};
-
-if (process.env.NODE_ENV === 'production') {
-  config.plugins = config.plugins.concat([
-    static_files({
-      include: ['./public'],
-    }),
+    isProduction &&
+      static_files({
+        include: ['./public'],
+      }),
     terser({
       compress: {
         global_defs: {
@@ -43,7 +41,23 @@ if (process.env.NODE_ENV === 'production') {
         },
       },
     }),
-  ]);
-}
+  ],
+};
+
+// if (process.env.NODE_ENV === 'production') {
+//   config.plugins = [
+//     ...config.plugins,
+//     static_files({
+//       include: ['./public'],
+//     }),
+//     terser({
+//       compress: {
+//         global_defs: {
+//           module: false,
+//         },
+//       },
+//     }),
+//   ];
+// }
 
 export default config;
