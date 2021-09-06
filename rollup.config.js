@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-// import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import url from '@rollup/plugin-url';
 import hotcss from 'rollup-plugin-hot-css';
@@ -28,36 +27,20 @@ let config = {
     }),
     resolve({ extensions, browser: true }),
     babel({ extensions, babelHelpers: 'bundled' }),
-    // commonjs(),
     url(),
     isProduction &&
       static_files({
         include: ['./public'],
       }),
-    terser({
-      compress: {
-        global_defs: {
-          module: false,
+    isProduction &&
+      terser({
+        compress: {
+          global_defs: {
+            module: false,
+          },
         },
-      },
-    }),
+      }),
   ],
 };
-
-// if (process.env.NODE_ENV === 'production') {
-//   config.plugins = [
-//     ...config.plugins,
-//     static_files({
-//       include: ['./public'],
-//     }),
-//     terser({
-//       compress: {
-//         global_defs: {
-//           module: false,
-//         },
-//       },
-//     }),
-//   ];
-// }
 
 export default config;
