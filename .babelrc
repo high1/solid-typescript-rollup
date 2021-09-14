@@ -7,6 +7,9 @@
     "@babel/typescript"
   ],
   "env": {
+    "development": {
+      "plugins": [["solid-refresh/babel", { "bundler": "esm" }]]
+    },
     "test": {
       "presets": [
         [
