@@ -2,10 +2,11 @@ import { Component, createSignal, onCleanup } from 'solid-js';
 import logo from 'assets/logo.svg';
 import wordmark from 'assets/wordmark.svg';
 import 'components/App.css';
+import Counter from 'components/Counter';
 
 const App: Component = () => {
-  const [count, setCount] = createSignal(0),
-    timer = setInterval(() => setCount(count() + 1), 1000);
+  const [time, setTime] = createSignal(0),
+    timer = setInterval(() => setTime(time() + 1), 1000);
   onCleanup(() => clearInterval(timer));
   return (
     <div class="App font-sans">
@@ -18,8 +19,9 @@ const App: Component = () => {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <p>
-          Page has been open for <code>{count}</code> seconds.
+          Page has been open for <code>{time}</code> seconds.
         </p>
+        <Counter />
       </header>
     </div>
   );

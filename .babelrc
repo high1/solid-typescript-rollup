@@ -8,7 +8,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [["solid-refresh/babel", { "bundler": "esm" }]]
+      "plugins": ["solid-refresh/babel"]
     },
     "test": {
       "presets": [
